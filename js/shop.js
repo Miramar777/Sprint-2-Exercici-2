@@ -65,10 +65,6 @@
       type: "clothes",
     },
   ];
-
-
-
-
   
   // => Reminder, it's extremely important that you debug your code.
   // ** It will save you a lot of time and frustration!
@@ -90,13 +86,11 @@
     if (productoAdd) {
       const productoExist = cart.find((item) => item.id === id);
       if (productoExist) {
-        // Si el producto ya está en el carrito, incrementar quantity
         productoExist.quantity++;
         total++;
         console.log("cart: ", cart);
         console.log("total: ", total);
       } else {
-        // Si no está, lo agrego con quantity inicial en 1
         cart.push({ ...productoAdd, quantity: 1 });
         total++;
         console.log("cart: ", cart);
@@ -107,7 +101,6 @@
       console.log(`El producto con ID ${id} no fue encontrado.`);
     }
   
-    // Llamar a las funciones para aplicar promociones y actualizar el carrito para que el usuario lo vea
   
     applyPromotionsCart();
     calculateTotal();
@@ -119,14 +112,12 @@
     const confirmMsg =
       "¿Estás seguro/a de vaciar el carrito? Esta acción no se puede deshacer.";
     const userConfirmed = confirm(confirmMsg);
-    // Reinicializo el cart vaciándolo con el array cart vacío
     if (userConfirmed) {
       cart = [];
-      total = 0; // Reinicializo el total
+      total = 0; 
   
-      // Lógica adicional para actualizar la interfaz de usuario si es necesario
       console.log("El carrito se ha vaciado correctamente");
-      printCart(); // Actualizo la visualización del carrito para el usuario
+      printCart(); 
     }
   }
   
@@ -140,9 +131,7 @@
   
     let totalCart = totalPrice;
     console.log("el totalPrice es: ", totalPrice);
-  
     console.log(`Total price of the cart: $${totalCart}`);
-  
     printCart();
   }
   
@@ -175,7 +164,7 @@
   
   
     console.log("Promotions applied successfully.");
-    printCart(); // Actualizar la visualización del carrito después de aplicar las promociones*/
+    printCart(); 
   
   // Exercise 5
   function printCart() {
@@ -215,26 +204,21 @@
   }
   
   // Nivell II
-  
   // Exercise 7
   function removeFromCart(id) {
     let index = cart.findIndex((item) => item.id === id);
   
     if (index !== -1) {
       let item = cart[index];
-  
       item.quantity > 1 ? item.quantity-- : cart.splice(index, 1);
-  
       console.log(`Producto "${item.name}" eliminado del cart.`);
     } else {
       console.log(`Producto con ${id} no se encuentra en el cart.`);
     }
-  
     applyPromotionsCart();
     calculateTotal();
     printCart();
   }
-  
   function open_modal() {
     printCart();
   }
